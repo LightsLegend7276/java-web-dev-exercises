@@ -21,9 +21,9 @@ public class CountingCharacters {
 //        String QUOTE = input.nextLine();
 //        input.close();
             while (sc.hasNextLine()) {
-                String QUOTE = sc.nextLine();
+                String quote = sc.nextLine();
                 Map<Character, Integer> charCount = new HashMap<>();
-                for (char letter : QUOTE.toLowerCase().toCharArray()) {
+                for (char letter : quote.toLowerCase().toCharArray()) {
                     if (!(letter >= 'a' && letter <= 'z')) {
                         continue;
                     }
