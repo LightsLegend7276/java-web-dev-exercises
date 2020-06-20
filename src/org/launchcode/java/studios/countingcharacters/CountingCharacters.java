@@ -1,7 +1,6 @@
 package org.launchcode.java.studios.countingcharacters;
 
 import java.io.File;
-import java.io.FileNotFoundException;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.Scanner;
@@ -14,7 +13,7 @@ public class CountingCharacters {
 //            "form that can be factored allowing that side of the equation to equal zero. " +
 //            "Once you’ve done that, it’s pretty straightforward from there.";
 
-    public static void main(String[] args) throws FileNotFoundException {
+    public static void main(String[] args) {
         File file = new File("studio.txt");
         try (Scanner sc = new Scanner(file)) {
 //        Scanner input = new Scanner(System.in);
