@@ -1,4 +1,4 @@
-package org.launchcode.java.studios.areaofacircle;
+package org.launchcode.java.studios.countingcharacters;
 
 import java.io.File;
 import java.io.FileNotFoundException;
