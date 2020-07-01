@@ -1,72 +1,61 @@
 package org.launchcode.java.studios.restaurant;
 
+import lombok.Getter;
+import lombok.Setter;
+
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 
+@Getter
+@Setter
 public class Menu {
 
     private ArrayList<MenuItem> menuItems;
+    @Getter
+    @Setter
     private static LocalDate updatedDt;
 
-    public Menu(ArrayList<MenuItem> menuItems) {
+    public Menu() {
         this.menuItems = new ArrayList<>();
-        this.setUpdatedDt(LocalDate.now());
-    }
-
-    public ArrayList<MenuItem> getMenuItems() {
-        return menuItems;
-    }
-
-    public void setMenuItems(ArrayList<MenuItem> menuItems) {
-        this.menuItems = menuItems;
-    }
-
-    public LocalDate getUpdatedDt() {
-        return updatedDt;
-    }
-
-    public void setUpdatedDt(LocalDate updatedDt) {
-        Menu.updatedDt = updatedDt;
+        Menu.setUpdatedDt(LocalDate.now());
     }
 
     public void addMenuItem(MenuItem menuItem) {
         ArrayList<MenuItem> items = this.getMenuItems();
-        items.add(menuItem);
-        this.setMenuItems(items);
+        if (!items.contains(menuItem)) {
+            items.add(menuItem);
+            this.setMenuItems(items);
+        }
     }
 
     public void addMenuItem(List<MenuItem> menuItems) {
-        ArrayList<MenuItem> items = this.getMenuItems();
-        items.addAll(menuItems);
-        this.setMenuItems(items);
+        for (MenuItem m : menuItems) {
+            addMenuItem(m);
+        }
     }
 
     public void removeMenuItem(MenuItem menuItem) {
         ArrayList<MenuItem> items = this.getMenuItems();
-        items.remove(menuItem);
-        this.setMenuItems(items);
-    }
-
-    public void removeMenuItem(List<MenuItem> menuItems) {
-        ArrayList<MenuItem> items = this.getMenuItems();
-        items.removeAll(menuItems);
-        this.setMenuItems(items);
-    }
-
-    public void showSingleMenuItem(MenuItem menuItem) {
-        System.out.println(menuItem.toString());
-    }
-
-    public void showAllMenuItems(List<MenuItem> menuItems) {
-        for (MenuItem m : menuItems) {
-            System.out.println(m.toString());
+        if (items.contains(menuItem)) {
+            items.remove(menuItem);
+            this.setMenuItems(items);
         }
     }
 
-    public static void main(String[] args) {
-        MenuItem menuItem = new MenuItem(4, "Hot Dog", "Main Course");
+    public void removeMenuItem(List<MenuItem> menuItems) {
+        for (MenuItem m : menuItems) {
+            removeMenuItem(m);
+        }
+    }
+
+    public void showSingleMenuItem(MenuItem menuItem) {
         System.out.println(menuItem);
-        System.out.println(menuItem.getPrice());
+    }
+
+    public void showAllMenuItems() {
+        for (MenuItem m : this.menuItems) {
+            showSingleMenuItem(m);
+        }
     }
 }
